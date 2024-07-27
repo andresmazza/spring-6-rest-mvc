@@ -1,0 +1,10 @@
+GET http://localhost:8080/api/v1/beer
+Content-Type: application/json
+
+
+
+GET http://localhost:8080/api/v1/beer/358aa72d-1fb4-4e49-9dc6-c108a0dd8117
+Content-Type: application/json
+curl --request GET \
+  --url http://localhost:8080/api/v1/beer/358aa72d-1fb4-4e49-9dc6-c108a0dd8117 \
+  --header 'user-agent: vscode-restclient'
