@@ -7,36 +7,39 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import guru.springframework.spring6restmvc.model.Beer;
 import guru.springframework.spring6restmvc.services.BeerService;
+import guru.springframework.spring6restmvc.services.BeerServiceImpl;
 
 import java.util.UUID;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-//@SpringBootTest
 @WebMvcTest(BeerController.class)
 class BeerControllerTest {
 
+    // MockMvc Context
     @Autowired
     MockMvc mockMvc;
 
     @MockBean
     BeerService beerService;
 
-    // @Autowired
-    // BeerController beerController;
+    BeerServiceImpl beerServiceImpl =  new BeerServiceImpl();
 
     @Test
-    void getBeerById() {
-        try {
-            mockMvc.perform(get("/api/v1/beer/" + UUID.randomUUID())
-                    .accept(MediaType.APPLICATION_JSON))
-                    .andExpect(status().isOk());
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+    void getBeerById() throws Exception {
+
+        Beer testBeer =  beerServiceImpl.listBeers().get(0);
+        //given(beerService.getBeerById(any(UUID.class)));
+
+        mockMvc.perform(get("/api/v1/beer/" + UUID.randomUUID())
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                //.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                ;
 
     }
 }
