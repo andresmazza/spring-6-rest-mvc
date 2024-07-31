@@ -1,10 +1,64 @@
+
 GET http://localhost:8080/api/v1/beer
 Content-Type: application/json
 
 
-
-GET http://localhost:8080/api/v1/beer/358aa72d-1fb4-4e49-9dc6-c108a0dd8117
+####################
+GET http://localhost:8080/api/v1/beer/23fd6908-fd3b-4eae-ac9d-d8f3858f63fe
 Content-Type: application/json
-curl --request GET \
-  --url http://localhost:8080/api/v1/beer/358aa72d-1fb4-4e49-9dc6-c108a0dd8117 \
-  --header 'user-agent: vscode-restclient'
+
+
+
+#############################################3
+## POST RESPONSE STATUS 201 y en el header el atributo LOCATION con el ID
+
+POST /api/v1/beer HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 130
+
+  {
+
+    "beerName": "test33",
+    "beerStyle": "LAGER",
+    "upc": "12356211",
+    "quantityOnHand": 200,
+    "price": 12.99
+  }
+
+################################
+## PUT REPOSENSE status 204 (no content )
+PUT /api/v1/beer/3854c0b6-0e1d-4352-a541-e0f7df92d605 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 147
+
+  {
+    "version": 2,
+    "beerName": "Andrux2",
+    "beerStyle": "LAGER",
+    "upc": "12356211",
+    "quantityOnHand": 200,
+    "price": 12.99
+  }
+
+###########################
+## DELETE REPOSENSE status 204 (no content )
+DELETE  /api/v1/beer/3854c0b6-0e1d-4352-a541-e0f7df92d605 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+
+###########################
+## PATCH La diferencia entre PUT PATCH es que PATCH se usa para modificar solo los valores que no son NULOS
+PATCH  /api/v1/beer/e57cb4ec-a769-4307-9a81-b27d4f3e423c HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+Content-Length: 147
+
+  {
+
+    "beerName": "Quilmes"
+
+  }
+#############################
